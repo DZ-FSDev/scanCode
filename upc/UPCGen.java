@@ -9,6 +9,8 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.EAN13Writer;
+import com.google.zxing.oned.EAN8Writer;
+import com.google.zxing.oned.UPCAWriter;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import com.dz_fs_dev.common.Graphics2DTools;
@@ -18,9 +20,12 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.4
+ * @version 0.0.5
  */
 public final class UPCGen {
+	private static final int WIDTH_1D = 300;
+	private static final int HEIGHT_1D = 150;
+
 	private UPCGen() {}
 	
 	/**
@@ -29,11 +34,11 @@ public final class UPCGen {
 	 * @param barcodeText The text to encode.
 	 * @return The EAN13 Barcode.
 	 * @throws WriterException
-	 * @since 0.0.2
+	 * @since 0.0.5
 	 */
 	public static BufferedImage generateEAN13BarcodeImage(String barcodeText) throws WriterException {
 		EAN13Writer ean13BarcodeWriter = new EAN13Writer();
-	    BitMatrix bitMatrix = ean13BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_13, 300, 150);
+		BitMatrix bitMatrix = ean13BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_13, WIDTH_1D, HEIGHT_1D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
@@ -44,11 +49,26 @@ public final class UPCGen {
 	 * @param barcodeText The text to encode.
 	 * @return The EAN8 Barcode.
 	 * @throws WriterException
-	 * @since 0.0.4
+	 * @since 0.0.5
 	 */
 	public static BufferedImage generateEAN8BarcodeImage(String barcodeText) throws WriterException {
-		EAN13Writer ean13BarcodeWriter = new EAN13Writer();
-	    BitMatrix bitMatrix = ean13BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_8, 300, 150);
+		EAN8Writer ean8BarcodeWriter = new EAN8Writer();
+	    BitMatrix bitMatrix = ean8BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_8, WIDTH_1D, HEIGHT_1D);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an UPC-A Barcode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The UPC-A Barcode.
+	 * @throws WriterException
+	 * @since 0.0.5
+	 */
+	public static BufferedImage generateUPCABarcodeImage(String barcodeText) throws WriterException {
+		UPCAWriter upcABarcodeWriter = new UPCAWriter();
+	    BitMatrix bitMatrix = upcABarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_A, WIDTH_1D, HEIGHT_1D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
