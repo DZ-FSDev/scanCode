@@ -18,7 +18,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.3
+ * @version 0.0.4
  */
 public final class UPCGen {
 	private UPCGen() {}
@@ -34,6 +34,21 @@ public final class UPCGen {
 	public static BufferedImage generateEAN13BarcodeImage(String barcodeText) throws WriterException {
 		EAN13Writer ean13BarcodeWriter = new EAN13Writer();
 	    BitMatrix bitMatrix = ean13BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_13, 300, 150);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an EAN8 Barcode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The EAN8 Barcode.
+	 * @throws WriterException
+	 * @since 0.0.4
+	 */
+	public static BufferedImage generateEAN8BarcodeImage(String barcodeText) throws WriterException {
+		EAN13Writer ean13BarcodeWriter = new EAN13Writer();
+	    BitMatrix bitMatrix = ean13BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_8, 300, 150);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
