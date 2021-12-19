@@ -8,6 +8,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.oned.EAN13Writer;
 import com.google.zxing.oned.EAN8Writer;
 import com.google.zxing.oned.UPCAWriter;
@@ -21,7 +22,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.6
+ * @version 0.0.7
  */
 public final class UPCGen {
 	private static final int WIDTH_1D = 300;
@@ -80,11 +81,26 @@ public final class UPCGen {
 	 * @param barcodeText The text to encode.
 	 * @return The UPC-E Barcode.
 	 * @throws WriterException
-	 * @since 0.0.6
+	 * @since 0.0.7
 	 */
 	public static BufferedImage generateUPCEBarcodeImage(String barcodeText) throws WriterException {
-		UPCEWriter upcABarcodeWriter = new UPCEWriter();
-	    BitMatrix bitMatrix = upcABarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_E, WIDTH_1D, HEIGHT_1D);
+		UPCEWriter upcEBarcodeWriter = new UPCEWriter();
+	    BitMatrix bitMatrix = upcEBarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_E, WIDTH_1D, HEIGHT_1D);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an Code39 Barcode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The Code39 Barcode.
+	 * @throws WriterException
+	 * @since 0.0.7
+	 */
+	public static BufferedImage generateCode39BarcodeImage(String barcodeText) throws WriterException{
+		Code39Writer cod39BarcodeWriter = new Code39Writer();
+	    BitMatrix bitMatrix = cod39BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_39, WIDTH_1D, HEIGHT_1D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
