@@ -22,11 +22,11 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.7
+ * @version 0.0.8
  */
 public final class UPCGen {
-	private static final int WIDTH_1D = 300;
-	private static final int HEIGHT_1D = 150;
+	private static int WIDTH_1D = 300;
+	private static int HEIGHT_1D = 150;
 
 	private UPCGen() {}
 	
@@ -101,6 +101,21 @@ public final class UPCGen {
 	public static BufferedImage generateCode39BarcodeImage(String barcodeText) throws WriterException{
 		Code39Writer cod39BarcodeWriter = new Code39Writer();
 	    BitMatrix bitMatrix = cod39BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_39, WIDTH_1D, HEIGHT_1D);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an Code93 Barcode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The Code93 Barcode.
+	 * @throws WriterException
+	 * @since 0.0.8
+	 */
+	public static BufferedImage generateCode93BarcodeImage(String barcodeText) throws WriterException{
+		Code39Writer cod93BarcodeWriter = new Code39Writer();
+	    BitMatrix bitMatrix = cod93BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_93, WIDTH_1D, HEIGHT_1D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
