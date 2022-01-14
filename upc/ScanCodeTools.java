@@ -26,6 +26,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.CodaBarWriter;
 import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.oned.Code93Writer;
@@ -42,7 +43,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.10
+ * @version 0.0.11
  */
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
@@ -164,6 +165,21 @@ public final class ScanCodeTools {
 	public static BufferedImage generateCode128BarcodeImage(String barcodeText) throws WriterException{
 		Code128Writer code128BarcodeWriter = new Code128Writer();
 	    BitMatrix bitMatrix = code128BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_128, WIDTH_1D, HEIGHT_1D);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an CodaBar Barcode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The CodaBar Barcode.
+	 * @throws WriterException
+	 * @since 0.0.11
+	 */
+	public static BufferedImage generateCodaBarBarcodeImage(String barcodeText) throws WriterException{
+		CodaBarWriter codaBarBarcodeWriter = new CodaBarWriter();
+	    BitMatrix bitMatrix = codaBarBarcodeWriter.encode(barcodeText, BarcodeFormat.CODABAR, WIDTH_1D, HEIGHT_1D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
