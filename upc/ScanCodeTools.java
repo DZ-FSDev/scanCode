@@ -32,6 +32,7 @@ import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.oned.Code93Writer;
 import com.google.zxing.oned.EAN13Writer;
 import com.google.zxing.oned.EAN8Writer;
+import com.google.zxing.oned.ITFWriter;
 import com.google.zxing.oned.UPCAWriter;
 import com.google.zxing.oned.UPCEWriter;
 import com.google.zxing.qrcode.QRCodeWriter;
@@ -43,7 +44,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.11
+ * @version 0.0.12
  */
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
@@ -180,6 +181,21 @@ public final class ScanCodeTools {
 	public static BufferedImage generateCodaBarBarcodeImage(String barcodeText) throws WriterException{
 		CodaBarWriter codaBarBarcodeWriter = new CodaBarWriter();
 	    BitMatrix bitMatrix = codaBarBarcodeWriter.encode(barcodeText, BarcodeFormat.CODABAR, WIDTH_1D, HEIGHT_1D);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an ITF Barcode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The ITF Barcode.
+	 * @throws WriterException
+	 * @since 0.0.12
+	 */
+	public static BufferedImage generateITFBarcodeImage(String barcodeText) throws WriterException{
+		ITFWriter itfBarcodeWriter = new ITFWriter();
+	    BitMatrix bitMatrix = itfBarcodeWriter.encode(barcodeText, BarcodeFormat.ITF, WIDTH_1D, HEIGHT_1D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
