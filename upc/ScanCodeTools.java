@@ -26,6 +26,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.datamatrix.DataMatrixWriter;
 import com.google.zxing.oned.CodaBarWriter;
 import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.oned.Code39Writer;
@@ -44,11 +45,15 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.12
+ * @version 0.0.13
  */
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
 	private static int HEIGHT_1D = 150;
+	
+
+	private static int WIDTH_2D = 300;
+	private static int HEIGHT_2D = 300;
 
 	private ScanCodeTools() {}
 
@@ -204,14 +209,30 @@ public final class ScanCodeTools {
 	 * Generates a QR Code for a specified text to encode.
 	 * 
 	 * @param barcodeText The text to encode.
-	 * @return The QR Code.
+	 * @return The QR 2D Barcode.
 	 * @throws WriterException 
-	 * @since 0.0.2
+	 * @since 0.0.12
 	 */
 	public static BufferedImage generateQRCodeImage(String barcodeText) throws WriterException  {
 	    QRCodeWriter qrBarcodeWriter = new QRCodeWriter();
 	    BitMatrix bitMatrix = 
-	    		qrBarcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 200, 200);
+	    		qrBarcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, WIDTH_2D, HEIGHT_2D);
+
+	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates a Data Matrix Code for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The Data Matrix 2D Barcode Code.
+	 * @throws WriterException 
+	 * @since 0.0.12
+	 */
+	public static BufferedImage generateDataMatrixCodeImage(String barcodeText) throws WriterException  {
+		DataMatrixWriter dataMatrixBarcodeWriter = new DataMatrixWriter();
+	    BitMatrix bitMatrix = 
+	    		dataMatrixBarcodeWriter.encode(barcodeText, BarcodeFormat.DATA_MATRIX, WIDTH_2D, HEIGHT_2D);
 
 	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
