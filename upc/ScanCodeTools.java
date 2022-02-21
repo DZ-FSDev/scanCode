@@ -50,7 +50,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
 	private static int HEIGHT_1D = 150;
-	
+
 
 	private static int WIDTH_2D = 300;
 	private static int HEIGHT_2D = 300;
@@ -67,11 +67,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateEAN8BarcodeImage(String barcodeText) throws WriterException {
 		EAN8Writer ean8BarcodeWriter = new EAN8Writer();
-	    BitMatrix bitMatrix = ean8BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_8, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = ean8BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_8, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an EAN13 Barcode for a specified text to encode and saves it to a file.
 	 * 
@@ -84,7 +84,7 @@ public final class ScanCodeTools {
 	public static void generateEAN13BarcodeImage(String barcodeText, File file) throws WriterException, IOException {
 		Graphics2DTools.saveAsPNG(generateEAN13BarcodeImage(barcodeText), file);
 	}
-	
+
 	/**
 	 * Generates an EAN13 Barcode for a specified text to encode.
 	 * 
@@ -97,9 +97,9 @@ public final class ScanCodeTools {
 		EAN13Writer ean13BarcodeWriter = new EAN13Writer();
 		BitMatrix bitMatrix = ean13BarcodeWriter.encode(barcodeText, BarcodeFormat.EAN_13, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an UPC-A Barcode for a specified text to encode.
 	 * 
@@ -110,11 +110,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateUPCABarcodeImage(String barcodeText) throws WriterException {
 		UPCAWriter upcABarcodeWriter = new UPCAWriter();
-	    BitMatrix bitMatrix = upcABarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_A, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = upcABarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_A, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an UPC-E Barcode for a specified text to encode.
 	 * 
@@ -125,11 +125,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateUPCEBarcodeImage(String barcodeText) throws WriterException {
 		UPCEWriter upcEBarcodeWriter = new UPCEWriter();
-	    BitMatrix bitMatrix = upcEBarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_E, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = upcEBarcodeWriter.encode(barcodeText, BarcodeFormat.UPC_E, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an Code39 Barcode for a specified text to encode.
 	 * 
@@ -140,11 +140,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateCode39BarcodeImage(String barcodeText) throws WriterException{
 		Code39Writer code39BarcodeWriter = new Code39Writer();
-	    BitMatrix bitMatrix = code39BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_39, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = code39BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_39, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an Code93 Barcode for a specified text to encode.
 	 * 
@@ -155,11 +155,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateCode93BarcodeImage(String barcodeText) throws WriterException{
 		Code93Writer code93BarcodeWriter = new Code93Writer();
-	    BitMatrix bitMatrix = code93BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_93, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = code93BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_93, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an Code128 Barcode for a specified text to encode.
 	 * 
@@ -170,11 +170,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateCode128BarcodeImage(String barcodeText) throws WriterException{
 		Code128Writer code128BarcodeWriter = new Code128Writer();
-	    BitMatrix bitMatrix = code128BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_128, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = code128BarcodeWriter.encode(barcodeText, BarcodeFormat.CODE_128, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an CodaBar Barcode for a specified text to encode.
 	 * 
@@ -185,11 +185,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateCodaBarBarcodeImage(String barcodeText) throws WriterException{
 		CodaBarWriter codaBarBarcodeWriter = new CodaBarWriter();
-	    BitMatrix bitMatrix = codaBarBarcodeWriter.encode(barcodeText, BarcodeFormat.CODABAR, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = codaBarBarcodeWriter.encode(barcodeText, BarcodeFormat.CODABAR, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates an ITF Barcode for a specified text to encode.
 	 * 
@@ -200,11 +200,11 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateITFBarcodeImage(String barcodeText) throws WriterException{
 		ITFWriter itfBarcodeWriter = new ITFWriter();
-	    BitMatrix bitMatrix = itfBarcodeWriter.encode(barcodeText, BarcodeFormat.ITF, WIDTH_1D, HEIGHT_1D);
+		BitMatrix bitMatrix = itfBarcodeWriter.encode(barcodeText, BarcodeFormat.ITF, WIDTH_1D, HEIGHT_1D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates a QR Code for a specified text to encode.
 	 * 
@@ -214,13 +214,13 @@ public final class ScanCodeTools {
 	 * @since 0.0.12
 	 */
 	public static BufferedImage generateQRCodeImage(String barcodeText) throws WriterException  {
-	    QRCodeWriter qrBarcodeWriter = new QRCodeWriter();
-	    BitMatrix bitMatrix = 
-	    		qrBarcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, WIDTH_2D, HEIGHT_2D);
+		QRCodeWriter qrBarcodeWriter = new QRCodeWriter();
+		BitMatrix bitMatrix = 
+				qrBarcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, WIDTH_2D, HEIGHT_2D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Generates a Data Matrix Code for a specified text to encode.
 	 * 
@@ -231,12 +231,12 @@ public final class ScanCodeTools {
 	 */
 	public static BufferedImage generateDataMatrixCodeImage(String barcodeText) throws WriterException  {
 		DataMatrixWriter dataMatrixBarcodeWriter = new DataMatrixWriter();
-	    BitMatrix bitMatrix = 
-	    		dataMatrixBarcodeWriter.encode(barcodeText, BarcodeFormat.DATA_MATRIX, WIDTH_2D, HEIGHT_2D);
+		BitMatrix bitMatrix = 
+				dataMatrixBarcodeWriter.encode(barcodeText, BarcodeFormat.DATA_MATRIX, WIDTH_2D, HEIGHT_2D);
 
-	    return MatrixToImageWriter.toBufferedImage(bitMatrix);
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
-	
+
 	/**
 	 * Returns the width of the 1D codes.
 	 * 
@@ -273,5 +273,45 @@ public final class ScanCodeTools {
 	 */
 	public static void setHEIGHT_1D(int height_1d) {
 		ScanCodeTools.HEIGHT_1D = height_1d;
+	}
+
+	/**
+	 * Returns the width of the 2D codes.
+	 * 
+	 * @return The width of 2D codes.
+	 * @since 0.0.15
+	 */
+	public static int getWIDTH_2D() {
+		return ScanCodeTools.WIDTH_2D;
+	}
+
+	/**
+	 * Sets the preferred width of 2D codes.
+	 * 
+	 * @param width_2d The preferred width of 2D codes.
+	 * @since 0.0.15
+	 */
+	public static void setWIDTH_2D(int width_2d) {
+		ScanCodeTools.WIDTH_2D = width_2d;
+	}
+
+	/**
+	 * Returns the height of the 2D codes.
+	 * 
+	 * @return The height of 2D codes.
+	 * @since 0.0.15
+	 */
+	public static int getHEIGHT_2D() {
+		return ScanCodeTools.HEIGHT_2D;
+	}
+
+	/**
+	 * Sets the preferred height of 2D codes.
+	 * 
+	 * @param int height_2d The preferred height of 2D codes.
+	 * @since 0.0.15
+	 */
+	public static void setHEIGHT_2D(int height_2d) {
+		ScanCodeTools.HEIGHT_2D = height_2d;
 	}
 }
