@@ -305,6 +305,23 @@ public final class ScanCodeTools {
 	}
 	*/
 	
+	/*
+	 * Generates an RSS-Expanded Code for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The RSS-Expanded 2D Barcode Code.
+	 * @throws WriterException 
+	 * @since 0.0.17
+	 
+	public static BufferedImage generateRSSExpandedCodeImage(String barcodeText) throws WriterException  {
+		RSSExpandedWriter rssExpandedBarcodeWriter = new RSSExpandedWriter();
+		BitMatrix bitMatrix = 
+				rssExpandedBarcodeWriter.encode(barcodeText, BarcodeFormat.RSS_Expanded, WIDTH_2D, HEIGHT_2D);
+
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	*/
+	
 	/**
 	 * Returns the width of the 1D codes.
 	 * 
