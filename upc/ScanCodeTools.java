@@ -37,6 +37,7 @@ import com.google.zxing.oned.EAN8Writer;
 import com.google.zxing.oned.ITFWriter;
 import com.google.zxing.oned.UPCAWriter;
 import com.google.zxing.oned.UPCEWriter;
+import com.google.zxing.pdf417.PDF417Writer;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import com.dz_fs_dev.common.Graphics2DTools;
@@ -46,7 +47,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.16
+ * @version 0.0.17
  */
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
@@ -250,6 +251,22 @@ public final class ScanCodeTools {
 		AztecWriter aztecBarcodeWriter = new AztecWriter();
 		BitMatrix bitMatrix = 
 				aztecBarcodeWriter.encode(barcodeText, BarcodeFormat.AZTEC, WIDTH_2D, HEIGHT_2D);
+
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an PDF417 Code for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The PDF417 2D Barcode Code.
+	 * @throws WriterException 
+	 * @since 0.0.17
+	 */
+	public static BufferedImage generatePDF417CodeImage(String barcodeText) throws WriterException  {
+		PDF417Writer pdf417BarcodeWriter = new PDF417Writer();
+		BitMatrix bitMatrix = 
+				pdf417BarcodeWriter.encode(barcodeText, BarcodeFormat.PDF_417, WIDTH_2D, HEIGHT_2D);
 
 		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
