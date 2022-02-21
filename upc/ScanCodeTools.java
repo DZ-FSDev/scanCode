@@ -45,7 +45,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.13
+ * @version 0.0.14
  */
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
@@ -238,30 +238,40 @@ public final class ScanCodeTools {
 	}
 	
 	/**
-	 * @return the wIDTH_1D
+	 * Returns the width of the 1D codes.
+	 * 
+	 * @return The width of 1D codes.
 	 */
 	public static int getWIDTH_1D() {
 		return ScanCodeTools.WIDTH_1D;
 	}
 
 	/**
-	 * @param wIDTH_1D the wIDTH_1D to set
+	 * Sets the preferred width of 1D codes.
+	 * 
+	 * @param width_1d The preferred width of 1D codes.
+	 * @since 0.0.14
 	 */
-	public static void setWIDTH_1D(int wIDTH_1D) {
-		ScanCodeTools.WIDTH_1D = wIDTH_1D;
+	public static void setWIDTH_1D(int width_1d) {
+		ScanCodeTools.WIDTH_1D = width_1d;
 	}
 
 	/**
-	 * @return the hEIGHT_1D
+	 * Returns the height of the 1D codes.
+	 * 
+	 * @return The height of 1D codes.
 	 */
 	public static int getHEIGHT_1D() {
 		return ScanCodeTools.HEIGHT_1D;
 	}
 
 	/**
-	 * @param hEIGHT_1D the hEIGHT_1D to set
+	 * Sets the preferred height of 1D codes.
+	 * 
+	 * @param int height_1d The preferred height of 1D codes.
+	 * @since 0.0.14
 	 */
-	public static void setHEIGHT_1D(int hEIGHT_1D) {
-		ScanCodeTools.HEIGHT_1D = hEIGHT_1D;
+	public static void setHEIGHT_1D(int height_1d) {
+		ScanCodeTools.HEIGHT_1D = height_1d;
 	}
 }
