@@ -288,6 +288,23 @@ public final class ScanCodeTools {
 	}
 	*/
 
+	/*
+	 * Generates an RSS-14 Code for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The RSS-14 2D Barcode Code.
+	 * @throws WriterException 
+	 * @since 0.0.17
+	 
+	public static BufferedImage generateRSS14CodeImage(String barcodeText) throws WriterException  {
+		RSS14Writer rss14BarcodeWriter = new RSS14Writer();
+		BitMatrix bitMatrix = 
+				rss14BarcodeWriter.encode(barcodeText, BarcodeFormat.RSS_14, WIDTH_2D, HEIGHT_2D);
+
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	*/
+	
 	/**
 	 * Returns the width of the 1D codes.
 	 * 
