@@ -24,6 +24,7 @@ import java.io.IOException;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
+import com.google.zxing.aztec.AztecWriter;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.datamatrix.DataMatrixWriter;
@@ -45,7 +46,7 @@ import com.dz_fs_dev.common.Graphics2DTools;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.14
+ * @version 0.0.16
  */
 public final class ScanCodeTools {
 	private static int WIDTH_1D = 300;
@@ -233,6 +234,22 @@ public final class ScanCodeTools {
 		DataMatrixWriter dataMatrixBarcodeWriter = new DataMatrixWriter();
 		BitMatrix bitMatrix = 
 				dataMatrixBarcodeWriter.encode(barcodeText, BarcodeFormat.DATA_MATRIX, WIDTH_2D, HEIGHT_2D);
+
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	
+	/**
+	 * Generates an Aztec Code for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The Aztec 2D Barcode Code.
+	 * @throws WriterException 
+	 * @since 0.0.16
+	 */
+	public static BufferedImage generateAztecCodeImage(String barcodeText) throws WriterException  {
+		AztecWriter aztecBarcodeWriter = new AztecWriter();
+		BitMatrix bitMatrix = 
+				aztecBarcodeWriter.encode(barcodeText, BarcodeFormat.AZTEC, WIDTH_2D, HEIGHT_2D);
 
 		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
