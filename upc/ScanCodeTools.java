@@ -270,6 +270,23 @@ public final class ScanCodeTools {
 
 		return MatrixToImageWriter.toBufferedImage(bitMatrix);
 	}
+	
+	/*
+	 * Generates an MaxiCode for a specified text to encode.
+	 * 
+	 * @param barcodeText The text to encode.
+	 * @return The MaxiCode 2D Barcode Code.
+	 * @throws WriterException 
+	 * @since 0.0.17
+	 
+	public static BufferedImage generateMaxiCodeCodeImage(String barcodeText) throws WriterException  {
+		MaxiCodeWriter maxiCodeWriter = new MaxiCodeWriter();
+		BitMatrix bitMatrix = 
+				maxiCodeWriter.encode(barcodeText, BarcodeFormat.MAXICODE, WIDTH_2D, HEIGHT_2D);
+
+		return MatrixToImageWriter.toBufferedImage(bitMatrix);
+	}
+	*/
 
 	/**
 	 * Returns the width of the 1D codes.
